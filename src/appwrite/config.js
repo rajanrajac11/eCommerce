@@ -14,7 +14,7 @@ export class DocumentService {
     this.buckets = new Storage(this.client);
   }
 
-  async createPost({
+  async createProduct({
     name,
 
     price,
@@ -34,12 +34,12 @@ export class DocumentService {
         }
       );
     } catch (error) {
-      console.log("Document Service error :: createPost error : ", error);
+      console.log("Document Service error :: createProduct error : ", error);
       return false;
     }
   }
 
-  async updatePost(slug, { name, price, featuredImage }) {
+  async updateProduct(slug, { name, price, featuredImage }) {
     try {
       return await this.databases.updateDocument(
         conf.appwriteDatabaseId,
@@ -52,11 +52,11 @@ export class DocumentService {
         }
       );
     } catch (error) {
-      console.log("Document Service error :: updataPost error : ", error);
+      console.log("Document Service error :: updataProduct error : ", error);
     }
   }
 
-  async getPost(slug) {
+  async getProduct(slug) {
     try {
       return await this.databases.getDocument(
         conf.appwriteDatabaseId,
@@ -64,24 +64,24 @@ export class DocumentService {
         slug
       );
     } catch (error) {
-      console.log("Document Service error :: getPost error : ", error);
+      console.log("Document Service error :: getProduct error : ", error);
       return false;
     }
   }
 
-  async getPosts() {
+  async getProducts() {
     try {
       return await this.databases.listDocuments(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId
       );
     } catch (error) {
-      console.log("Document Service error :: getPosts error : ", error);
+      console.log("Document Service error :: getProducts error : ", error);
       return false;
     }
   }
 
-  async deletePost(slug) {
+  async deleteProduct(slug) {
     try {
       await this.databases.deleteDocument(
         conf.appwriteDatabaseId,
@@ -90,7 +90,7 @@ export class DocumentService {
       );
       return true;
     } catch (error) {
-      console.log("Document Service error :: deletePost error : ", error);
+      console.log("Document Service error :: deleteProduct error : ", error);
       return false;
     }
   }

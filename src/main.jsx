@@ -10,6 +10,7 @@ import Shop from "./pages/Shop.jsx";
 import Cart from "./pages/Cart.jsx";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
+import ProductForm from "./components/ProductForm.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/add-product",
+        element: <ProductForm />,
       },
     ],
   },
