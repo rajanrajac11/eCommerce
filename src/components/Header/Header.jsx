@@ -18,12 +18,9 @@ const Header = () => {
       name: "Cart",
       link: "/cart",
     },
-    {
-      name: "Add a Product",
-      link: "/add-product",
-    },
   ];
-  const authStatus = useSelector((state) => state.auth);
+  const authStatus = useSelector((state) => state.auth.status);
+  console.log(authStatus);
   return (
     <>
       <div className="bg-gray-900 p-3">
@@ -33,7 +30,10 @@ const Header = () => {
           </div>
           <div className="flex flex-wrap gap-4">
             {navItems.map((item) => (
-              <span className="bg-gray-400 p-1 rounded-xl text-black w-14 flex items-center justify-center">
+              <span
+                className="bg-gray-400 p-1 rounded-xl text-black w-14 flex items-center justify-center"
+                key={item.name}
+              >
                 <Link to={item.link}>{item.name}</Link>
               </span>
             ))}

@@ -9,7 +9,7 @@ function LogoutBtn() {
   const navigate = useNavigate();
 
   const logoutHandler = () => {
-    authService.logout().then(() => dispatch(logout()));
+    authService.logout().then(() => [dispatch(logout())]);
     navigate("/");
   };
   return (
