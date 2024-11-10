@@ -1,8 +1,13 @@
 import React from "react";
-import documentService from "../appwrite/config";
-import Button from "./Button";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/ProductSlice";
 
 function ProductCard({ id, name, price, image, quantity }) {
+  console.log(id);
+  const dispatch = useDispatch();
+  const addToCartHandler = () => {
+    dispatch(addToCart(id));
+  };
   return (
     <div className="w-80 bg-gray-100 dark:bg-gray-800 rounded-xl p-4">
       <div className="w-full justify-center mb-4">
@@ -12,7 +17,12 @@ function ProductCard({ id, name, price, image, quantity }) {
       <div className="flex justify-between items-center">
         <span className="text-white">Price : ${price}</span>
         <span>
-          <Button>Add to Cart {quantity}</Button>
+          <button
+            onClick={addToCartHandler}
+            className="p-2 bg-gray-100 rounded-xl"
+          >
+            Add to Cart({quantity})
+          </button>
         </span>
       </div>
     </div>
