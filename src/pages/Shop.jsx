@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
-import ProductDetails from "../components/ProductDetails";
+import { useSelector } from "react-redux";
 function Shop() {
+  const products = useSelector((state) => state.product);
   return (
     <div className="bg-gray-400 p-3 flex justify-center items-center ">
       <div className="flex flex-wrap justify-between">
         <ul className="flex flex-wrap flex-row justify-around gap-5">
-          {ProductDetails.map((product) => (
+          {products.map((product) => (
             <li key={product.id}>
               <ProductCard {...product} />
             </li>

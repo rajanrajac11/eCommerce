@@ -2,7 +2,7 @@ import React from "react";
 import documentService from "../appwrite/config";
 import Button from "./Button";
 
-function ProductCard({ id, name, price, image }) {
+function ProductCard({ id, name, price, image, quantity }) {
   return (
     <div className="w-80 bg-gray-100 dark:bg-gray-800 rounded-xl p-4">
       <div className="w-full justify-center mb-4">
@@ -12,7 +12,7 @@ function ProductCard({ id, name, price, image }) {
       <div className="flex justify-between items-center">
         <span className="text-white">Price : ${price}</span>
         <span>
-          <Button>Add to Cart</Button>
+          <Button>Add to Cart {quantity}</Button>
         </span>
       </div>
     </div>
