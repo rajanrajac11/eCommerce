@@ -20,7 +20,6 @@ const Header = () => {
     },
   ];
   const authStatus = useSelector((state) => state.auth.status);
-  console.log(authStatus);
   return (
     <>
       <div className="bg-gray-900 p-3">
