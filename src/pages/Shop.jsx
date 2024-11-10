@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { useSelector } from "react-redux";
 function Shop() {
-  const products = useSelector((state) => state.product);
+  const products = useSelector((state) => state.product.products);
   return (
     <div className="bg-gray-400 p-3 flex justify-center items-center ">
       <div className="flex flex-wrap justify-between">
