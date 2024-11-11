@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CartProductCard from "../components/CartProductCard";
+import TotalPrice from "../components/TotalPrice";
 
 function Cart() {
   const products = useSelector((state) => state.product.products);
@@ -13,6 +14,8 @@ function Cart() {
               return <CartProductCard {...product} />;
             }
           })}
+
+          <TotalPrice />
         </ul>
       </div>
     </div>
