@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 function TotalPrice() {
   const products = useSelector((state) => state.product.products);
   const [total, setTotal] = useState(0);
+  let [index, setIndex] = useState(0);
   useEffect(() => {
     const calculatedTotal = products.reduce((acc, product) => {
       return product.quantity > 0
@@ -22,8 +23,9 @@ function TotalPrice() {
           <th>Quantity</th>
           <th>Price</th>
         </tr>
-        {products.map((product, index) => {
-          if (product.quantity > 0) {
+        {products
+          .filter((product) => product.quantity > 0)
+          .map((product, index) => {
             return (
               <tr key={product.id}>
                 <td>{index + 1}</td>
@@ -32,8 +34,7 @@ function TotalPrice() {
                 <td>${product.price * product.quantity}</td>
               </tr>
             );
-          }
-        })}
+          })}
         <tr>
           <td></td>
           <td></td>
