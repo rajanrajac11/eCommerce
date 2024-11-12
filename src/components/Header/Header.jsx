@@ -22,26 +22,36 @@ const Header = () => {
   const authStatus = useSelector((state) => state.auth.status);
   return (
     <>
-      <div className="bg-gray-900 p-3">
+      <div className="bg-gray-800 p-5">
         <div className="flex flex-wrap justify-around text-white  text-lg">
-          <div className="font-bold bg-orange-400 p-1 rounded-xl">
+          <div className="bg-orange-500 hover:bg-orange-600 p-2 rounded-lg font-serif font-bold">
             <Link to={"/"}>RRA Shop</Link>
           </div>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-10">
             {navItems.map((item) => (
               <span
-                className="bg-gray-400 p-1 rounded-xl text-black w-14 flex items-center justify-center"
+                className="   text-white font-mono flex items-center justify-center gap-3"
                 key={item.name}
               >
                 <Link to={item.link}>{item.name}</Link>
               </span>
             ))}
           </div>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mt-2">
             {!authStatus && (
               <>
-                <Link to={"/login"}>Login</Link>
-                <Link to={"/signup"}>Signup</Link>
+                <Link
+                  to={"/login"}
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-2 rounded-lg font-serif"
+                >
+                  Login
+                </Link>
+                <Link
+                  to={"/signup"}
+                  className="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg font-serif"
+                >
+                  Signup
+                </Link>
               </>
             )}
             {authStatus && <LogoutBtn />}

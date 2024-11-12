@@ -14,7 +14,9 @@ function LogoutBtn() {
   };
   return (
     <div>
-      <button onClick={logoutHandler}>Logout</button>
+      <button onClick={logoutHandler} className="font-serif">
+        Logout
+      </button>
     </div>
   );
 }

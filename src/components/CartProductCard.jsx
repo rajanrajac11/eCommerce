@@ -18,9 +18,9 @@ function CartProductCard({ id, price, name, quantity, image }) {
           alt={name}
           className="w-24 h-28 rounded-xl bg-gray-700 p-1"
         />
-        <div className="flex flex-col gap-2">
-          <strong>{name}</strong>
-          <span className="text-xl">Price: ${price}</span>
+        <div className="flex flex-col gap-2 font-serif">
+          <strong className="text-xl">{name}</strong>
+          <span className="text-lg">Price: ${price}</span>
           <div className="flex flex-row gap-3 justify-around text-xl">
             <button
               onClick={decreaseCartHandler}
