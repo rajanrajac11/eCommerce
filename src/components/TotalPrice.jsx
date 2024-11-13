@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function TotalPrice() {
   const products = useSelector((state) => state.product.products);
   const [total, setTotal] = useState(0);
-  let [index, setIndex] = useState(0);
+
   useEffect(() => {
     const calculatedTotal = products.reduce((acc, product) => {
       return product.quantity > 0
@@ -13,34 +13,42 @@ function TotalPrice() {
     }, 0);
     setTotal(calculatedTotal);
   }, [products]);
+
   return (
-    <div className="bg-gray-300 p-2 rounded-xl flex flex-col justify-center items-center">
-      <h2 className="font-bold text-xl ">Total Price</h2>
-      <table className="text-center" cellPadding={7} border={1}>
-        <tr>
-          <th>SN</th>
-          <th>Item</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-        {products
-          .filter((product) => product.quantity > 0)
-          .map((product, index) => {
-            return (
-              <tr key={product.id}>
-                <td>{index + 1}</td>
-                <td>{product.name}</td>
-                <td>{product.quantity}</td>
-                <td>${product.price * product.quantity}</td>
+    <div className="bg-gray-200 p-4 rounded-lg shadow-lg flex flex-col items-center">
+      <h2 className="font-bold text-2xl mb-4 text-gray-700">Total Price</h2>
+      <table className="table-auto w-full border-collapse">
+        <thead>
+          <tr className="bg-gray-400 text-white">
+            <th className="px-4 py-2 border">SN</th>
+            <th className="px-4 py-2 border">Item</th>
+            <th className="px-4 py-2 border">Quantity</th>
+            <th className="px-4 py-2 border">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products
+            .filter((product) => product.quantity > 0)
+            .map((product, index) => (
+              <tr
+                key={product.id}
+                className="text-gray-700 odd:bg-white even:bg-gray-100"
+              >
+                <td className="px-4 py-2 border">{index + 1}</td>
+                <td className="px-4 py-2 border">{product.name}</td>
+                <td className="px-4 py-2 border">{product.quantity}</td>
+                <td className="px-4 py-2 border">
+                  ${product.price * product.quantity}
+                </td>
               </tr>
-            );
-          })}
-        <tr>
-          <td></td>
-          <td></td>
-          <td>Total:</td>
-          <td>${total}</td>
-        </tr>
+            ))}
+          <tr className="bg-gray-300 font-bold text-gray-800">
+            <td className="px-4 py-2 border"></td>
+            <td className="px-4 py-2 border"></td>
+            <td className="px-4 py-2 border">Total:</td>
+            <td className="px-4 py-2 border">${total}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );

@@ -1,11 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../store/ProductSlice";
 
 function ProductCard({ id, name, price, image, quantity }) {
   const dispatch = useDispatch();
+  const authStatus = useSelector((state) => state.auth.status);
   const addToCartHandler = () => {
-    dispatch(addToCart(id));
+    if (!authStatus) {
+      alert("Please Login to Add to Cart");
+    } else {
+      dispatch(addToCart(id));
+    }
   };
   return (
     <div className="w-80 bg-gray-100 dark:bg-gray-800 rounded-xl p-4">

@@ -32,8 +32,8 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen bg-gray-100 dark:bg-gray-800">
-      <div className="mx-auto w-full max-w-lg bg-gray-200 dark:bg-gray-700 rounded-xl p-10 border border-gray-200 dark:border-gray-600">
+    <div className="flex items-center justify-center w-full h-full bg-gray-100 p-10">
+      <div className="mx-auto w-full max-w-lg bg-gray-200 dark:bg-gray-700 rounded-xl p-10 border border-gray-200 ">
         <h2 className="text-center text-2xl font-bold leading-tight text-gray-900 dark:text-gray-100">
           Sign in to your account
         </h2>
