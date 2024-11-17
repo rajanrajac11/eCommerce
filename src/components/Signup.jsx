@@ -5,12 +5,27 @@ import { Button, Input } from "./index";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import authService from "../appwrite/auth";
+import { useEffect } from "react";
 
 function Signup() {
   const navigate = useNavigate();
   const [error, setError] = useState();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
+
+  // Clear session on component load
+  useEffect(() => {
+    const clearSession = async () => {
+      try {
+        await authService.logout(); // If using Appwrite, clear server-side session
+        sessionStorage.clear(); // Clear session storage
+        localStorage.removeItem("authToken"); // Optionally clear localStorage if used
+      } catch (err) {
+        console.error("Error clearing session:", err.message);
+      }
+    };
+    clearSession();
+  }, []);
 
   const create = async (data) => {
     setError("");
