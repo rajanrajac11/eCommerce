@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "../components/ProductCard";
+import { ProductCard } from "../components/index";
 import { useSelector } from "react-redux";
 function Shop() {
   const products = useSelector((state) => state.product.products);
